@@ -45,8 +45,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.time.ZonedDateTime;
 import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -3306,6 +3306,25 @@ public class MattermostApiTest {
       assertEquals(filePath.getFileName().toString(), metadata.getName());
     }
 
+  }
+
+  @Nested
+  class LdapApiTest {
+    @Test
+    public void syncLdap() {
+      th.logout().loginSystemAdmin();
+
+      // Enterprise Edition required
+      assertStatus(client.syncLdap(), Status.NOT_IMPLEMENTED);
+    }
+
+    @Test
+    public void testLdap() {
+      th.logout().loginSystemAdmin();
+
+      // Enterprise Edition required
+      assertStatus(client.testLdap(), Status.NOT_IMPLEMENTED);
+    }
   }
 
 }
